@@ -18,7 +18,7 @@ public class SotoMain {
 	
 	//test for git
 
-	
+
 	JFrame window;
 	Container con;
 	JPanel titleNamePanel, subTitlePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, menuButtonPanel1, menuButtonPanel, playerPanel, menuTextPanel, JournalSelectPanel, titlePanel, SusListPanel;
@@ -217,7 +217,7 @@ public class SotoMain {
 //        	JScount = 0;
 //        }
         if(Acount > 0) {
-        	noteTextArea.setVisible(false);
+        	SusListPanel.setVisible(false);
         	Acount = 0;
         }
         
@@ -546,7 +546,7 @@ public class SotoMain {
 		SusListPanel.setBounds(100, 100, 1500, 800);
 		SusListPanel.setBackground(Color.yellow);
 		
-         if(suspects.length==0) {					//change this check to say that if the suspects list is empty then display
+         if(suspects.length==0) {					
         	plugStr="woahhhh now, looks like your suspect list is empty, hit the button to copy everyone's name down - no one is safe from suspicion";
         	noteTextButton = new JButton("copy list");
         	noteTextButton.setBackground(Color.black);
