@@ -16,7 +16,7 @@ import javax.swing.JTextField;
 
 public class SotoMain {
 	
-	//test for git
+	//test for git ++
 
 
 	JFrame window;
