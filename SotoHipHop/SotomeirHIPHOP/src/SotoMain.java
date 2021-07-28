@@ -25,7 +25,7 @@ public class SotoMain {
 	JPanel titleNamePanel, subTitlePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, menuButtonPanel1, menuButtonPanel, playerPanel, menuTextPanel, JournalSelectPanel, titlePanel, SusListPanel;
 	JLabel titleNameLabel, subTitleLabel;
 	Font titleFont = new Font("Times New Roman", Font.BOLD, 120), normalFont = new Font("Times New Roman", Font.PLAIN, 90), subTitleFont = new Font("Times New Roman", Font.ITALIC, 30), menuFont = new Font("Times New Roman", Font.PLAIN, 20), menuButtonFont = new Font("Times New Roman", Font.PLAIN, 150),  LabelFont = new Font("Times New Roman", Font.BOLD, 20);
-	JTextArea mainTextArea, menuTextArea,journalTextAreaTitle, journalTextAreaNote, errorTextArea, noteTextArea,journalTextAreaTitleLabel, journalTextAreaNoteLabel, fieldLabel,fieldTitleLabel;
+	JTextArea mainTextArea, menuTextArea,journalTextAreaTitle, journalTextAreaNote, errorTextArea, noteTextArea,journalTextAreaTitleLabel, journalTextAreaNoteLabel, fieldLabel,fieldTitleLabel, newNoteTextArea;
 	JButton startButton, menuButton, choice1, choice2, choice3, choice4, menuExitButton, Journal, SusList, newJournal, editJournal, titleButton, backButton, noteTextButton;
 	String position;
 	JTextField field, fieldTitle, noteTextField;
@@ -390,7 +390,7 @@ public class SotoMain {
 	     	    selectedKey = title;
 	        }
 			
-	        noteTextArea = new JTextArea("Note TExt here");
+	        noteTextArea = new JTextArea("Note Text here");
 	        noteTextArea.setBounds(400, 100, 800, 1080); 
 	        noteTextArea.setBackground(Color.black);
 	        noteTextArea.setForeground(Color.white);
@@ -401,10 +401,10 @@ public class SotoMain {
 	        
 	        
 			noteTextField = new JTextField(20);
-			noteTextField.setBounds(1500, 100, 300, 100);
+			noteTextField.setBounds(100, 550, 300, 100);
 			noteTextField.setBackground(Color.WHITE);
 			noteTextField.setFont(menuFont);
-			noteTextField.addActionListener(editTextHandler);		//change from this to class object that handles text from the editor and alters the corresponding hashed value, updating the note
+			noteTextField.addActionListener(editTextHandler);	
 			
 			con.add(noteTextField);
 			con.add(titlePanel);
@@ -452,18 +452,32 @@ public class SotoMain {
 		
 		
         journalTextAreaNote = new JTextArea();
-        journalTextAreaNote.setBounds(500, 100, 600, 550); 
+        journalTextAreaNote.setBounds(500, 100, 600, 400); 
         journalTextAreaNote.setBackground(Color.black);
         journalTextAreaNote.setForeground(Color.white);
         journalTextAreaNote.setFont(menuFont);
         journalTextAreaNote.setLineWrap(true);
         journalTextAreaNote.setWrapStyleWord(true); 
         journalTextAreaNote.setEditable(false); 
+
+        fieldTitleLabel = new JTextArea("ENTER TITLE:");
+        fieldTitleLabel.setBounds(100, 635, 300, 20); 
+        fieldTitleLabel.setBackground(Color.red);
+        fieldTitleLabel.setForeground(Color.white);
+        fieldTitleLabel.setFont(LabelFont);
+        fieldTitleLabel.setLineWrap(true);
+        fieldTitleLabel.setWrapStyleWord(true); 
+        fieldTitleLabel.setEditable(false); 
         
+        fieldTitle = new JTextField(10);
+        fieldTitle.setBounds(100, 655, 800, 30);
+		fieldTitle.setBackground(Color.WHITE);
+		fieldTitle.setFont(menuFont);
+		fieldTitle.addActionListener(textHandler);
 
         fieldLabel = new JTextArea("ENTER NOTE:");
-        fieldLabel.setBounds(100, 650, 300, 20); 
-        fieldLabel.setBackground(Color.blue);
+        fieldLabel.setBounds(100, 685, 300, 20); 
+        fieldLabel.setBackground(Color.red);
         fieldLabel.setForeground(Color.white);
         fieldLabel.setFont(LabelFont);
         fieldLabel.setLineWrap(true);
@@ -471,26 +485,10 @@ public class SotoMain {
         fieldLabel.setEditable(false); 
         
 		field = new JTextField(10);
-		field.setBounds(100, 670, 800, 30);
+		field.setBounds(100, 705, 800, 30);
         field.setBackground(Color.WHITE);
         field.setFont(menuFont);
         field.addActionListener(textHandler);
-
-        fieldTitleLabel = new JTextArea("ENTER TITLE:");
-        fieldTitleLabel.setBounds(100, 600, 300, 20); 
-        fieldTitleLabel.setBackground(Color.blue);
-        fieldTitleLabel.setForeground(Color.white);
-        fieldTitleLabel.setFont(LabelFont);
-        fieldTitleLabel.setLineWrap(true);
-        fieldTitleLabel.setWrapStyleWord(true); 
-        fieldTitleLabel.setEditable(false); 
-        
-        
-        fieldTitle = new JTextField(10);
-        fieldTitle.setBounds(100, 620, 800, 30);
-		fieldTitle.setBackground(Color.WHITE);
-		fieldTitle.setFont(menuFont);
-		fieldTitle.addActionListener(textHandler);
         
 		con.add(fieldTitleLabel);
 		con.add(fieldLabel);
@@ -561,20 +559,32 @@ public class SotoMain {
         	noteTextButton.setFocusPainted(false);
         	noteTextButton.addActionListener(copySusListHandler);
     	    SusListPanel.add(noteTextButton);
+			
+			noteTextArea = new JTextArea(plugStr);
+			noteTextArea.setBounds(400, 100, 700, 600); 
+			noteTextArea.setBackground(Color.black);
+			noteTextArea.setForeground(Color.white);
+			noteTextArea.setFont(menuFont);
+			noteTextArea.setLineWrap(true);
+			noteTextArea.setWrapStyleWord(true); 
+			noteTextArea.setEditable(false); 
+			SusListPanel.add(noteTextArea);
         }else {
         	plugStr="Suspects List: \n" + suspects;
         	SusListPanel.remove(noteTextButton);
+
+			noteTextArea = new JTextArea(plugStr);
+			noteTextArea.setBounds(400, 100, 700, 600); 
+			noteTextArea.setBackground(Color.black);
+			noteTextArea.setForeground(Color.white);
+			noteTextArea.setFont(normalFont);
+			noteTextArea.setLineWrap(true);
+			noteTextArea.setWrapStyleWord(true); 
+			noteTextArea.setEditable(false); 
+			SusListPanel.add(noteTextArea);
         }
          
-        noteTextArea = new JTextArea(plugStr);
-        noteTextArea.setBounds(400, 100, 700, 600); 
-        noteTextArea.setBackground(Color.black);
-        noteTextArea.setForeground(Color.white);
-        noteTextArea.setFont(menuFont);
-        noteTextArea.setLineWrap(true);
-        noteTextArea.setWrapStyleWord(true); 
-        noteTextArea.setEditable(false); 
-        SusListPanel.add(noteTextArea);
+        
        
         
        
@@ -588,6 +598,24 @@ public class SotoMain {
 		for(int i =0; i<passengers.size(); i++){
 			suspects.add(passengers.get(i));
 		}
+
+		SusListPanel.remove(noteTextButton);
+		noteTextArea.setVisible(false);
+
+		newNoteTextArea = new JTextArea("Suspect List: \n" + suspects);
+        newNoteTextArea.setBounds(400, 100, 700, 600); 
+        newNoteTextArea.setBackground(Color.black);
+        newNoteTextArea.setForeground(Color.white);
+        newNoteTextArea.setFont(normalFont);
+        newNoteTextArea.setLineWrap(true);
+        newNoteTextArea.setWrapStyleWord(true); 
+        newNoteTextArea.setEditable(false); 
+        SusListPanel.add(newNoteTextArea);
+
+		
+
+		
+
 	}
 	
 	
@@ -749,6 +777,7 @@ public class SotoMain {
 		public void actionPerformed(ActionEvent event) {
 			String edit = noteTextField.getText();
 			noteTextArea.append("\n" + edit);
+			//save to hash map??
 		}
 	}
 	
@@ -891,7 +920,6 @@ public class SotoMain {
 	
 	public class copySusListHandler implements ActionListener {
 		public void actionPerformed(ActionEvent event) {
-			//set the previous text to false visibility and display the suspect list
 			copySusList();
 			
 		}
