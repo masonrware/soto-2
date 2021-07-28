@@ -5,6 +5,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -23,13 +24,21 @@ public class SotoMain {
 	Container con;
 	JPanel titleNamePanel, subTitlePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, menuButtonPanel1, menuButtonPanel, playerPanel, menuTextPanel, JournalSelectPanel, titlePanel, SusListPanel;
 	JLabel titleNameLabel, subTitleLabel;
-	Font titleFont = new Font("Times New Roman", Font.BOLD, 160), normalFont = new Font("Times New Roman", Font.PLAIN, 90), subTitleFont = new Font("Times New Roman", Font.ITALIC, 30), menuFont = new Font("Times New Roman", Font.PLAIN, 20), menuButtonFont = new Font("Times New Roman", Font.PLAIN, 150),  LabelFont = new Font("Times New Roman", Font.BOLD, 20);
+	Font titleFont = new Font("Times New Roman", Font.BOLD, 120), normalFont = new Font("Times New Roman", Font.PLAIN, 90), subTitleFont = new Font("Times New Roman", Font.ITALIC, 30), menuFont = new Font("Times New Roman", Font.PLAIN, 20), menuButtonFont = new Font("Times New Roman", Font.PLAIN, 150),  LabelFont = new Font("Times New Roman", Font.BOLD, 20);
 	JTextArea mainTextArea, menuTextArea,journalTextAreaTitle, journalTextAreaNote, errorTextArea, noteTextArea,journalTextAreaTitleLabel, journalTextAreaNoteLabel, fieldLabel,fieldTitleLabel;
 	JButton startButton, menuButton, choice1, choice2, choice3, choice4, menuExitButton, Journal, SusList, newJournal, editJournal, titleButton, backButton, noteTextButton;
 	String position;
 	JTextField field, fieldTitle, noteTextField;
 	int Jcount = 0, Ecount = 0, JScount = 0, Mcount = 0, Acount = 0;
 	HashMap<String, String> journal = new HashMap<>();
+	ArrayList<String> passengers = new ArrayList<String>(){
+		{
+		add("pass1");
+		add("pass2");
+		add("pass3");
+		}
+	};
+	ArrayList<String> suspects = new ArrayList<String>();
 
 	ImageIcon logo = new ImageIcon();
 	String selectedKey;
@@ -51,7 +60,7 @@ public class SotoMain {
         con = window.getContentPane();
         
         titleNamePanel = new JPanel();
-        titleNamePanel.setBounds(0, 100, 1920, 200);
+        titleNamePanel.setBounds(0, 100, 1500, 200);
         titleNamePanel.setBackground(Color.blue);
         
         titleNameLabel = new JLabel("SOTOMEIR: HIP-HOP");
@@ -59,7 +68,7 @@ public class SotoMain {
         titleNameLabel.setFont(titleFont);  
          
         startButtonPanel = new JPanel();
-        startButtonPanel.setBounds(750, 600, 400, 120);
+        startButtonPanel.setBounds(550, 600, 400, 120); //600
         startButtonPanel.setBackground(Color.blue);
          
         startButton = new JButton("START");
@@ -70,7 +79,7 @@ public class SotoMain {
         startButton.setFocusPainted(false);
         
         subTitlePanel = new JPanel();
-        subTitlePanel.setBounds(650, 320, 650, 100);
+        subTitlePanel.setBounds(450, 320, 650, 100);
         subTitlePanel.setBackground(Color.blue);
         
         subTitleLabel = new JLabel("A Text-Based RPG by Mason Ware");
@@ -102,7 +111,7 @@ public class SotoMain {
         
         
         mainTextPanel = new JPanel();
-        mainTextPanel.setBounds(100, 100, 1080, 800);
+        mainTextPanel.setBounds(100, 100, 800, 450);
         mainTextPanel.setBackground(Color.black);
            
        
@@ -120,7 +129,7 @@ public class SotoMain {
         
         
         choiceButtonPanel = new JPanel();
-        choiceButtonPanel.setBounds(1300, 350, 500, 350);
+        choiceButtonPanel.setBounds(920, 100, 500, 350);
         choiceButtonPanel.setBackground(Color.yellow);
         choiceButtonPanel.setLayout(new GridLayout(4,1));
         con.add(choiceButtonPanel);
@@ -221,10 +230,10 @@ public class SotoMain {
         	Acount = 0;
         }
         
-        menuButtonPanel = new JPanel();
-        menuButtonPanel.setBounds(100, 100, 1500, 1080);
-        menuButtonPanel.setBackground(Color.yellow);
-        menuButtonPanel.setLayout(new GridLayout(6,1));
+        // menuButtonPanel = new JPanel();
+        // menuButtonPanel.setBounds(100, 100, 1500, 1080);
+        // menuButtonPanel.setBackground(Color.yellow);
+        // menuButtonPanel.setLayout(new GridLayout(6,1));
         
         menuExitButton = new JButton("EXIT");
         menuExitButton.setBackground(Color.black);
@@ -235,7 +244,7 @@ public class SotoMain {
         menuButtonPanel1.add(menuExitButton);
         
         menuButtonPanel = new JPanel();
-        menuButtonPanel.setBounds(100, 100, 1500, 1080);
+        menuButtonPanel.setBounds(100, 100, 800, 1080);
         menuButtonPanel.setBackground(Color.yellow);
         menuButtonPanel.setLayout(new GridLayout(5,1));
         
@@ -311,7 +320,7 @@ public class SotoMain {
         }
         
         JournalSelectPanel = new JPanel();
-        JournalSelectPanel.setBounds(100, 100, 1500, 800);
+        JournalSelectPanel.setBounds(100, 100, 800, 500);
         JournalSelectPanel.setBackground(Color.yellow);
         JournalSelectPanel.setLayout(new GridLayout(2,1));
 	    
@@ -353,7 +362,7 @@ public class SotoMain {
 		
 		if(journal.isEmpty()) {
 			errorTextArea = new JTextArea ("NO ENTRIES TO EDIT");
-			errorTextArea.setBounds(100, 100, 2000, 1080); 
+			errorTextArea.setBounds(100, 100, 800, 1080); 
 			errorTextArea.setBackground(Color.black);
 			errorTextArea.setForeground(Color.white);
 			errorTextArea.setFont(normalFont);
@@ -382,7 +391,7 @@ public class SotoMain {
 	        }
 			
 	        noteTextArea = new JTextArea("Note TExt here");
-	        noteTextArea.setBounds(400, 100, 1000, 1080); 
+	        noteTextArea.setBounds(400, 100, 800, 1080); 
 	        noteTextArea.setBackground(Color.black);
 	        noteTextArea.setForeground(Color.white);
 	        noteTextArea.setFont(menuFont);
@@ -453,7 +462,7 @@ public class SotoMain {
         
 
         fieldLabel = new JTextArea("ENTER NOTE:");
-        fieldLabel.setBounds(100, 830, 300, 20); 
+        fieldLabel.setBounds(100, 650, 300, 20); 
         fieldLabel.setBackground(Color.blue);
         fieldLabel.setForeground(Color.white);
         fieldLabel.setFont(LabelFont);
@@ -462,13 +471,13 @@ public class SotoMain {
         fieldLabel.setEditable(false); 
         
 		field = new JTextField(10);
-		field.setBounds(100, 850, 800, 30);
+		field.setBounds(100, 670, 800, 30);
         field.setBackground(Color.WHITE);
         field.setFont(menuFont);
         field.addActionListener(textHandler);
 
         fieldTitleLabel = new JTextArea("ENTER TITLE:");
-        fieldTitleLabel.setBounds(100, 780, 300, 20); 
+        fieldTitleLabel.setBounds(100, 600, 300, 20); 
         fieldTitleLabel.setBackground(Color.blue);
         fieldTitleLabel.setForeground(Color.white);
         fieldTitleLabel.setFont(LabelFont);
@@ -478,7 +487,7 @@ public class SotoMain {
         
         
         fieldTitle = new JTextField(10);
-        fieldTitle.setBounds(100, 800, 800, 30);
+        fieldTitle.setBounds(100, 620, 800, 30);
 		fieldTitle.setBackground(Color.WHITE);
 		fieldTitle.setFont(menuFont);
 		fieldTitle.addActionListener(textHandler);
@@ -502,9 +511,6 @@ public class SotoMain {
 	public void SuspectList() {
 		BackOutHandler backOut = new BackOutHandler();
 		copySusListHandler copySusListHandler = new copySusListHandler();
-		
-		String passengers[] = {"Bert", "Kelly", "Mary"}; 
-		String suspects[] = {};
 		
 		
 		choiceButtonPanel.setVisible(false);
@@ -543,10 +549,10 @@ public class SotoMain {
         String plugStr = "Suspect List:";
        
         SusListPanel = new JPanel();
-		SusListPanel.setBounds(100, 100, 1500, 800);
+		SusListPanel.setBounds(100, 100, 800, 500);
 		SusListPanel.setBackground(Color.yellow);
 		
-         if(suspects.length==0) {					
+         if(suspects.size()==0) {					
         	plugStr="woahhhh now, looks like your suspect list is empty, hit the button to copy everyone's name down - no one is safe from suspicion";
         	noteTextButton = new JButton("copy list");
         	noteTextButton.setBackground(Color.black);
@@ -556,12 +562,12 @@ public class SotoMain {
         	noteTextButton.addActionListener(copySusListHandler);
     	    SusListPanel.add(noteTextButton);
         }else {
-        	plugStr="Suspects List:";
+        	plugStr="Suspects List: \n" + suspects;
         	SusListPanel.remove(noteTextButton);
         }
          
         noteTextArea = new JTextArea(plugStr);
-        noteTextArea.setBounds(400, 100, 1000, 600); 
+        noteTextArea.setBounds(400, 100, 700, 600); 
         noteTextArea.setBackground(Color.black);
         noteTextArea.setForeground(Color.white);
         noteTextArea.setFont(menuFont);
@@ -576,6 +582,12 @@ public class SotoMain {
         Acount++;
         
         con.add(SusListPanel);
+	}
+
+	public void copySusList(){
+		for(int i =0; i<passengers.size(); i++){
+			suspects.add(passengers.get(i));
+		}
 	}
 	
 	
@@ -879,7 +891,9 @@ public class SotoMain {
 	
 	public class copySusListHandler implements ActionListener {
 		public void actionPerformed(ActionEvent event) {
-			System.out.println("Yo!");
+			//set the previous text to false visibility and display the suspect list
+			copySusList();
+			
 		}
 	}
 	
