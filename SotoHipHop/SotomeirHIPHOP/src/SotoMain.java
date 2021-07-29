@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.text.AbstractDocument.ElementEdit;
 
 
 public class SotoMain {
@@ -450,7 +451,6 @@ public class SotoMain {
         journalTextAreaNoteLabel.setWrapStyleWord(true); 
         journalTextAreaNoteLabel.setEditable(false); 
 		
-		
         journalTextAreaNote = new JTextArea();
         journalTextAreaNote.setBounds(500, 100, 600, 400); 
         journalTextAreaNote.setBackground(Color.black);
@@ -777,7 +777,14 @@ public class SotoMain {
 		public void actionPerformed(ActionEvent event) {
 			String edit = noteTextField.getText();
 			noteTextArea.append("\n" + edit);
-			//save to hash map??
+			String key = titleButton.getText();
+			//System.out.println(journal.get(key + "\n" + edit));    -- debug
+			//store the value in a var and then update and reapply
+			String newEdit = journal.get(key );
+			
+			System.out.println(newEdit);
+			System.out.println(edit);
+			journal.put(key, journal.get(key + "\n" + edit)); //wrong call
 		}
 	}
 	
