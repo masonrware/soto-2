@@ -599,18 +599,37 @@ public class SotoMain {
 			suspects.add(passengers.get(i));
 		}
 
-		SusListPanel.remove(noteTextButton);
+		SusListPanel.setVisible(false);
 		noteTextArea.setVisible(false);
+		
+		for (int i = 0; i<suspects.size(); i++){
+			System.out.println(suspects.get(i));	//reads each passenger
+			
+			titleTextAreaSusList = new JTextArea("Suspect List: \n" + suspects.get(i));
+			titleTextAreaSusList.setBounds(400, 100, 700, 600); 
+			newNoteTextArea.setBackground(Color.black);
+			titleTextAreaSusList.setForeground(Color.white);
+			newNoteTextArea.setFont(menuFont);
+			newNoteTextArea.setLineWrap(true);
+			newNoteTextArea.setWrapStyleWord(true); 
+			newNoteTextArea.setEditable(false); 
+			con.add(newNoteTextArea);
 
-		newNoteTextArea = new JTextArea("Suspect List: \n" + suspects);
-        newNoteTextArea.setBounds(400, 100, 700, 600); 
-        newNoteTextArea.setBackground(Color.black);
-        newNoteTextArea.setForeground(Color.white);
-        newNoteTextArea.setFont(normalFont);
-        newNoteTextArea.setLineWrap(true);
-        newNoteTextArea.setWrapStyleWord(true); 
-        newNoteTextArea.setEditable(false); 
-        SusListPanel.add(newNoteTextArea);
+			newNoteTextArea = new JTextArea("Suspect List: \n" + suspects.get(i));
+			newNoteTextArea.setBounds(400, 100, 700, 600); 
+			newNoteTextArea.setBackground(Color.black);
+			newNoteTextArea.setForeground(Color.white);
+			newNoteTextArea.setFont(menuFont);
+			newNoteTextArea.setLineWrap(true);
+			newNoteTextArea.setWrapStyleWord(true); 
+			newNoteTextArea.setEditable(false); 
+			con.add(newNoteTextArea);
+		}
+
+
+		
+
+
 
 		
 
@@ -778,13 +797,10 @@ public class SotoMain {
 			String edit = noteTextField.getText();
 			noteTextArea.append("\n" + edit);
 			String key = titleButton.getText();
-			//System.out.println(journal.get(key + "\n" + edit));    -- debug
-			//store the value in a var and then update and reapply
 			String newEdit = journal.get(key );
 			
-			System.out.println(newEdit);
-			System.out.println(edit);
-			journal.put(key, journal.get(key + "\n" + edit)); //wrong call
+			System.out.println(newEdit + "\n" + edit);
+			journal.put(key, newEdit + "\n" + edit);
 		}
 	}
 	
